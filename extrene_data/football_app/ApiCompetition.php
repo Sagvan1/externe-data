@@ -159,22 +159,22 @@ if (isset($_POST["save"]))
                         <?php
 
                          echo '<!-- Naam van de competition -->
-                                <h4 class="card-title fw-bold mb-3">'. htmlspecialchars($competition["name"]) . '</h4>
+                                <h4 class="card-title fw-bold mb-3">'. $competition["name"] . '</h4>
                                 
                                 <!-- Code van de competition -->
-                                <p class="card-text"><strong>Code:</strong>' . htmlspecialchars($competition["code"]) . '</p>
+                                <p class="card-text"><strong>Code: </strong>' . $competition["code"] . '</p>
                                 <!-- Type van de competition -->
-                                <p class="card-text"><strong>Type:</strong>'. htmlspecialchars($competition["type"]) . '</p>
+                                <p class="card-text"><strong>Type: </strong>'. $competition["type"] . '</p>
                                 
                                 <!-- Formulier om competition op te slaan -->
                                 <form method="POST" class="mt-3">
       
                                     <!-- Verborgen velden met competition gegevens -->
-                                    <input type="hidden" name="id" value="' . htmlspecialchars($competition["id"]) . '">
-                                    <input type="hidden" name="name" value="'. htmlspecialchars($competition["name"]) . '">
-                                    <input type="hidden" name="code" value="'. htmlspecialchars($competition["code"]) . '">
-                                    <input type="hidden" name="type" value="'. htmlspecialchars($competition["type"]) . '">
-                                    <input type="hidden" name="emblem" value="'. htmlspecialchars($competition["emblem"]) . '">
+                                    <input type="hidden" name="id" value="' . $competition["id"] . '">
+                                    <input type="hidden" name="name" value="'. $competition["name"] . '">
+                                    <input type="hidden" name="code" value="'. $competition["code"] . '">
+                                    <input type="hidden" name="type" value="'. $competition["type"] . '">
+                                    <input type="hidden" name="emblem" value="'. $competition["emblem"] . '">
         
                                     <!-- Opslaan-knop -->
                                     <button type="submit" name="save" class="btn btn-success w-100">

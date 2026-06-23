@@ -56,11 +56,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
 
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="ApiCompetition.php">Competitions API</a></li>
-                <li class="nav-item"><a class="nav-link" href="ApiTeam.php">Teams API</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Players API</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Matches API</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Standings API</a></li>
+                <li class="nav-item"><a class="nav-link" href="ApiCompetition.php">Competitions</a></li>
+                <li class="nav-item"><a class="nav-link" href="ApiTeam.php">Teams</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Players</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Matches</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Standings</a></li>
             </ul>
 
         </div>

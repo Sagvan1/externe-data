@@ -108,7 +108,7 @@ if (!empty($_GET["search"])) {
     <!-- Succesmelding tonen als die bestaat -->
     <?php if (!empty($successMessage)): ?>
         <div class="alert alert-success alert-dismissible fade show">
-            <?php echo htmlspecialchars($successMessage) ?>
+            <?php echo $successMessage ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     <?php endif; ?>
@@ -136,7 +136,7 @@ if (!empty($_GET["search"])) {
         echo '
                 <!-- MODAL: bewerken van competitie -->
                 <div class="modal fade"
-                     id="editModal'. htmlspecialchars($competition["id"]). '"
+                     id="editModal'. $competition["id"]. '"
                      tabindex="-1">
     
                     <div class="modal-dialog">
@@ -152,14 +152,14 @@ if (!empty($_GET["search"])) {
             
                                  <div class="modal-body">
                                         <!-- verborgen ID veld -->
-                                       <input type="hidden" name="id" value="'. htmlspecialchars($competition["id"]) . '">
+                                       <input type="hidden" name="id" value="'. $competition["id"] . '">
                                             
                                        <label class="form-label">Naam</label>
-                                       <input type="text" name="name" class="form-control mb-3" value="'. htmlspecialchars($competition["name"]) . '">   
+                                       <input type="text" name="name" class="form-control mb-3" value="'. $competition["name"] . '">   
                                        <label class="form-label">Code</label>
-                                       <input type="text" name="code" class="form-control mb-3" value="'. htmlspecialchars($competition["code"]). '">
+                                       <input type="text" name="code" class="form-control mb-3" value="'. $competition["code"]. '">
                                        <label class="form-label">Type</label>
-                                       <input type="text" name="type" class="form-control" value="' . htmlspecialchars($competition["type"]) . '">
+                                       <input type="text" name="type" class="form-control" value="' . $competition["type"] . '">
                                  </div>
                                         
                                  <div class="modal-footer">
@@ -182,7 +182,7 @@ if (!empty($_GET["search"])) {
 
                     <!-- Embleem tonen als die bestaat -->
                     <?php if (!empty($competition["emblem"])): ?>
-                        <img src="<?php echo  htmlspecialchars($competition["emblem"]) ?>"
+                        <img src="<?php echo  $competition["emblem"] ?>"
                              class="card-img-top p-3"
                              style="height: 180px; object-fit: contain;">
 
@@ -196,20 +196,19 @@ if (!empty($_GET["search"])) {
 
                         <!-- Competitie info -->
                         <h4 class="card-title fw-bold mb-3">
-                            '. htmlspecialchars($competition["name"]) . '
+                            '. $competition["name"] . '
                         </h4>
 
                         <p class="card-text">
-                            <strong>Code:</strong> '. htmlspecialchars($competition["code"]) .'</p>
+                            <strong>Code:</strong> '. $competition["code"] .'</p>
 
                         <p class="card-text">
-                            <strong>Type:</strong> '. htmlspecialchars($competition["type"]) . ' </p>
+                            <strong>Type:</strong> '. $competition["type"] . ' </p>
 
                         <!-- DELETE + EDIT knoppen -->
-                        <form method="POST">
+                        <form method="POST" onsubmit="return confirm(\'Weet je zeker dat je dit competitie wilt verwijderen?\');">
 
-                            <input type="hidden" name="id" value="'. htmlspecialchars($competition["id"]) .'">
-
+                            <input type="hidden" name="id" value="'. $competition["id"] .'">
                             <!-- Delete knop -->
                             <button type="submit" name="delete" class="btn btn-danger w-100 mb-2">
                                 Verwijderen
@@ -219,7 +218,7 @@ if (!empty($_GET["search"])) {
 
                         <!-- Edit knop opent modal -->
                         <button type="button" class="btn btn-warning w-100" data-bs-toggle="modal"
-                                data-bs-target="#editModal'. htmlspecialchars($competition["id"]) . '">
+                                data-bs-target="#editModal'. $competition["id"] . '">
                             Bewerken
                         </button>
 

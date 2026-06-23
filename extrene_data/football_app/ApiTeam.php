@@ -4,7 +4,7 @@
  * Date 28-5-26
  * Overzicht van API
  */
-
+// inladen van classes
 require_once "includes/ApiService.php";
 require_once "includes/Team.php";
 require_once "includes/Database.php";
@@ -22,7 +22,7 @@ $apiService = new ApiService();
 //Teams ophalen uit de football API
 $teamsAPI = $apiService->getDataFromApi("competitions/DED/teams");
 
-// Variabele voor succesmelding.
+// Variabele voor succesmelding
 $successMessage = "";
 
 // Controleren of het formulier is verzonden
@@ -37,7 +37,7 @@ if (isset($_POST["save"]))
     $params["founded"] = $_POST["founded"];
     $params["clubColors"] = $_POST["clubColors"];
     $params["venue"] = $_POST["venue"];
-
+    $params["competition_id"] = $_POST["competition_id"];
 
     // teams opslaan in de database.
     $team->create($params);
@@ -147,7 +147,7 @@ if (isset($_POST["save"]))
                             <!-- Logo van de competition tonen -->
                             <?php if (!empty($teamData["crest"])): ?>
 
-                                <img src="<?php echo htmlspecialchars($teamData["crest"]) ?> "
+                                <img src="<?php echo $teamData["crest"] ?> "
                                 class="card-img-top p-3"
                                          style="height: 180px; object-fit: contain;">
     
@@ -158,25 +158,27 @@ if (isset($_POST["save"]))
                                 echo '
                                        <div class="card-body">
                                               <!-- Naam van de team-->
-                                            <h4 class="card-title fw-bold mb-3">'. htmlspecialchars( $teamData["name"]). '</h4>
+                                            <h4 class="card-title fw-bold mb-3">'.  $teamData["name"]. '</h4>
                                             <!-- Opgericht van de team-->
-                                            <p class="card-text"><strong>Opgericht: </strong>'. htmlspecialchars($teamData["founded"]) . '</p>
+                                            <p class="card-text"><strong>Opgericht: </strong>'. $teamData["founded"] . '</p>
                                             <!-- Kleur van de team-->
-                                            <p class="card-text"><strong>Kleuren: </strong>'. htmlspecialchars($teamData["clubColors"]).'</p>
+                                            <p class="card-text"><strong>Kleuren: </strong>'. $teamData["clubColors"].'</p>
                                             <!-- Stadion van de team-->
-                                            <p class="card-text"><strong>Stadion: </strong>'. htmlspecialchars($teamData["venue"]) .'</p>
+                                            <p class="card-text"><strong>Stadion: </strong>'. $teamData["venue"].'</p>
             
                                             <!-- Formulier om team op te slaan -->
                                             <form method="POST" class="mt-3">
                                             
                                                 <!-- Verborgen velden met teams gegevens -->
-                                                <input type="hidden" name="id" value="'.htmlspecialchars($teamData["id"]) .'">
-                                                <input type="hidden" name="name" value="'. htmlspecialchars($teamData["name"] ). '">
-                                                <input type="hidden" name="crest" value="'. htmlspecialchars($teamData["crest"]).'">
-                                                <input type="hidden" name="founded" value="'. htmlspecialchars($teamData["founded"]) .'">
-                                                <input type="hidden" name="clubColors" value="'. htmlspecialchars($teamData["clubColors"]).'">
-                                                <input type="hidden" name="venue" value="'. htmlspecialchars($teamData["venue"]) .'">
+                                                <input type="hidden" name="id" value="'. $teamData["id"] .'">
+                                                <input type="hidden" name="name" value="'. $teamData["name"] . '">
+                                                <input type="hidden" name="crest" value="'. $teamData["crest"].'">
+                                                <input type="hidden" name="founded" value="'. $teamData["founded"] .'">
+                                                <input type="hidden" name="clubColors" value="'. $teamData["clubColors"].'">
+                                                <input type="hidden" name="venue" value="'. $teamData["venue"] .'">
+                                                <input type="hidden" name="competition_id" value="'. $teamData['runningCompetitions'][0]["id"] .'">
                                                 
+                                              
                                                  <!-- Opslaan-knop -->
                                                 <button type="submit" name="save" class="btn btn-success w-100">
                                                     Toevoegen aan database
@@ -187,7 +189,6 @@ if (isset($_POST["save"]))
                             ?>
                         </div>
                     </div>
-
 
                 <?php endforeach; ?>
 

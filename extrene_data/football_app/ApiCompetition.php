@@ -126,7 +126,7 @@ if (isset($_POST["save"]))
         <!-- Alleen uitvoeren als de API competities heeft teruggegeven -->
         <?php if(isset($competitionsAPI["competitions"])): ?>
 
-        <?php foreach ($competitionsAPI["competitions"] as $competition): ?>
+        <?php foreach ($competitionsAPI["competitions"] as $competition):?>
 
             <?php
 
